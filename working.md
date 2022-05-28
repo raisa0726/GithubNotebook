@@ -130,9 +130,11 @@ git rm -r -f 消したいフォルダ
 ```bash
 # リモートbranch削除
 git push --delete origin branch_name
+
 # ローカルbranch削除
 git checkout main
 git branch -d branch_name
+
 #確認
 git branch
 ```

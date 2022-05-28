@@ -83,9 +83,7 @@ git config --global --unset https.proxy
 
 ## ssh設定方法(非推奨)
 
-:::warning
-こちらの方法では、proxyの設定が難しいです。
-:::
+<p class="callout warning">こちらの方法では、proxyの設定が難しいです。</p>
 [GitHub に SSH で接続する](https://docs.github.com/ja/enterprise-server@3.0/authentication/connecting-to-github-with-ssh)
 
 ## ターミナルでbranchをわかるようにしたい
