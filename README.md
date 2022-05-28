@@ -2,7 +2,7 @@
 
 ## 目次
 
-1. [はじめる](./basic.md)
+1. [はじめる](./first.md)
 2. [作業中に使うコマンド](./working.md)
 3. [作業を完了する](./complete.md)
 4. [その他](./other.md)
