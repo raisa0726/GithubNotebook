@@ -13,49 +13,47 @@
 ## 機密データを上げてしまった
 
 <details><summary>履歴からパージする方法</summary>
-	<div>
 
-		```bash
-		# 機密データを含むファイルを削除して、最新のコミットをそのままにしておく
-		bfg --delete-files 機密データを含むファイル
+```bash
+# 機密データを含むファイルを削除して、最新のコミットをそのままにしておく
+bfg --delete-files 機密データを含むファイル
 
-		# passwords.txt にリストされているすべてのテキストについて、リポジトリの履歴にあれば置き換える
-		bfg --replace-text passwords.txt
+# passwords.txt にリストされているすべてのテキストについて、リポジトリの履歴にあれば置き換える
+bfg --replace-text passwords.txt
 
-		# 機密データが削除されたら、変更を GitHub に強制的にプッシュする
-		git push --force
-		```
-	</div>
+# 機密データが削除されたら、変更を GitHub に強制的にプッシュする
+git push --force
+```
 </details>
 
 <details><summary>git filter-repoを使用する方法</summary>
 
-		```bash
-		# git filter-repoをインストール
-		brew install git-filter-repo
+```bash
+# git filter-repoをインストール
+brew install git-filter-repo
 
-		# 機密データを含むリポジトリのローカルコピーが履歴にまだない場合は、ローカルコンピュータにリポジトリのクローンを作成
-		git clone git@github.com:ユーザー名/リポジトリ名.git
+# 機密データを含むリポジトリのローカルコピーが履歴にまだない場合は、ローカルコンピュータにリポジトリのクローンを作成
+git clone git@github.com:ユーザー名/リポジトリ名.git
 
-		# リポジトリのワーキングディレクトリに移動
-		cd リポジトリ
+# リポジトリのワーキングディレクトリに移動
+cd リポジトリ
 
-		# 次のコマンドを実行 機密データを含むファイルへのパスは、ファイル名だけではなく、削除するファイルへのパスで置き換え
-		git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA
+# 次のコマンドを実行 機密データを含むファイルへのパスは、ファイル名だけではなく、削除するファイルへのパスで置き換え
+git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA
 
-		# 機密データを含むファイルを、誤って再度コミットしないようにするため、.gitignore に追加
-		echo "YOUR-FILE-WITH-SENSITIVE-DATA" >> .gitignore
-		git add .gitignore
-		git commit -m "Add YOUR-FILE-WITH-SENSITIVE-DATA to .gitignore"
+# 機密データを含むファイルを、誤って再度コミットしないようにするため、.gitignore に追加
+echo "YOUR-FILE-WITH-SENSITIVE-DATA" >> .gitignore
+git add .gitignore
+git commit -m "Add YOUR-FILE-WITH-SENSITIVE-DATA to .gitignore"
 
-		# リポジトリの履歴から削除対象をすべて削除したこと、すべてのブランチがチェックアウトされたことをダブルチェック
+# リポジトリの履歴から削除対象をすべて削除したこと、すべてのブランチがチェックアウトされたことをダブルチェック
 
-		#リポジトリの状態が整ったら、ローカルでの変更をフォースプッシュして、GitHub リポジトリと、プッシュしたすべてのブランチに上書き
-		git push origin --force --all
+#リポジトリの状態が整ったら、ローカルでの変更をフォースプッシュして、GitHub リポジトリと、プッシュしたすべてのブランチに上書き
+git push origin --force --all
 
-		# 機密データをタグ付きリリースから削除するため、Git タグに対しても次のようにフォースプッシュする
-		git push origin --force --tags
-		```
+# 機密データをタグ付きリリースから削除するため、Git タグに対しても次のようにフォースプッシュする
+git push origin --force --tags
+```
 
 </details>
 
@@ -85,9 +83,8 @@ git config --list
 
 ## ssh設定方法(非推奨)
 
-:::note warn
-警告: こちらの方法では、proxyの設定が難しいです。
-:::
+> **warning**
+> こちらの方法では、proxyの設定が難しいため、大学等で使用する場合はhttpのトークンの使用で接続することを推奨します。
 
 [GitHub に SSH で接続する](https://docs.github.com/ja/enterprise-server@3.0/authentication/connecting-to-github-with-ssh)
 
